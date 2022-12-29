@@ -1,367 +1,144 @@
-   <!--Header -->
+    
+  <?php include('attach/header.php') ?>
+    <?php include 'config.php'; ?>
 
-   <?php include('attach/header.php') ?>
-   <?php include 'config.php'; ?>
-    <!-- Hero Section Begin -->
-    <section class="hero">
+    <div class="embed-responsive embed-responsive-1by1">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div>
+
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-<!--                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul> -->
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+234 802 035 8984</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" data-setbg="assets/img/hero/banner.jpg">
-                        <div class="hero__text">
-                            <span>MOVADO WRIST</span>
-                            <h2>24 Karat <br />100% Gold</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
-                        </div>
-                    </div>
+                <div class="col">
+                    <p class="text-white mt-5 mb-5">Welcome back, <b>Admin</b></p>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
-    <!-- Categories Section Begin -->
-    <section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                    <?php  
-                        $query = "SELECT prod_name,prod_img FROM products"; 
-                        $result = mysqli_query($con, $query);
-                        while($row = mysqli_fetch_array($result)){
-                            echo '
-                                <div class="col-lg-3">
-                                    <div class="categories__item set-bg">
-                                        <img src="data:image/jpeg;base64,'.base64_encode($row['prod_img'] ).'">
-                             
-                            ';
-                            echo "<h5><a href='#''>".$row['prod_name']."</a></h5>";
-                            echo "</div>";
-                            echo "</div>";
-                        }
-                    ?>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
-
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Featured Product</h2>
-                    </div>
-                    <div class="featured__controls">
-                        <ul>
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".shoes">Shoes</li>
-                            <li data-filter=".bags">Bags</li>
-                            <li data-filter=".watches">Wrist Watches</li>
-                            <li data-filter=".devices">Electronics</li>
-                        </ul>
+            <!-- row -->
+            <div class="row tm-content-row">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col" style="display: none;">
+                    <div class="tm-bg-primary-dark tm-block">
+                        <h2 class="tm-block-title">Latest Hits</h2>
+                        <canvas id="lineChart"></canvas>
                     </div>
                 </div>
-            </div>
-            <div class="row featured__filter">
-                <?php
-                        $query = "SELECT * FROM products ORDER BY id DESC LIMIT 10"; 
-                        $result = mysqli_query($con, $query);
-                        while($row = mysqli_fetch_array($result)){
-                            $id=$row['id'];
-                            echo '
-                                <div class="col-lg-3 col-md-4 col-sm-6 mix">
-                                    <div class="featured__item">
-                                        <div class="featured__item__pic set-bg">
-                                            <img src="data:image/jpeg;base64,'.base64_encode($row['prod_img'] ).'">
-                                            ';
-                                            
-                             
-                            echo "<ul class='featured__item__pic__hover'>
-                                                <li><a href='product_details.php?id=$id'><i class='fa fa-heart'></i></a></li>
-                                                <li><a href='#'><i class='fa fa-retweet'></i></a></li>
-                                                <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
-                                            </ul>
-                                        </div>";
-                            echo "<div class='featured__item__text'>
-                                            <h6><a href='#'>".$row['prod_name']."</a></h6>";
-                            echo "<h5># ".$row['price']."</h5>
-                                        </div>
-                                    </div>
-                                </div>";
-                        }
-                ?>
-            </div>
-        </div>
-    </section>
-    <!-- Featured Section End -->
-
-    <!-- Banner Begin -->
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="assets/img/banner/banner-1.jpg" alt="">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col" style="display: none;">
+                    <div class="tm-bg-primary-dark tm-block">
+                        <h2 class="tm-block-title">Performance</h2>
+                        <canvas id="barChart"></canvas>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="assets/img/banner/banner-2.jpg" alt="">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block tm-block-taller">
+                        <h2 class="tm-block-title">Storage Information</h2>
+                        <div id="pieChartContainer">
+                            <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
+                        </div>                        
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Banner End -->
-
-    <!-- Latest Product Section Begin -->
-    <section class="latest-product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>Latest Products</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
+                        <h2 class="tm-block-title">Notification List</h2>
+                        <div class="tm-notification-items">
                             <?php
-                                $query1 = "SELECT * FROM products ORDER BY id DESC LIMIT 3"; 
-                                $result1 = mysqli_query($con, $query1);
-                                while($row1 = mysqli_fetch_array($result1)){
-                                    $id=$row1['id'];
-                                    echo '<a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                            <img src="data:image/jpeg;base64,'.base64_encode($row1['prod_img'] ).'">
+                                $sql1 = mysqli_query($con, "SELECT d.id, d.first_name, d.last_name, d.date_created, p.prod_name, p.prod_img FROM delivery_details as d inner join products as p on d.prod_id = p.id WHERE status='Incoming'");
+                                if (mysqli_num_rows($sql1)>0) {
+                                    # code...
+                                    while ($result = mysqli_fetch_assoc($sql1)) {
+                                        # code...
+                                        echo '<div class="media tm-notification-item">
+                                            <div class="tm-gray-circle"><img src="data:image/jpeg;base64,'.base64_encode($result['prod_img']).'" class="rounded-circle"></div>
+                                            <div class="media-body"><a href="order_details.php?id='.$result['id'].'">
+                                                <p class="mb-2"><b>'.$result['first_name'].' '.$result['last_name'].' placed order for '.$result['prod_name'].'</b>.</p>
+                                                <span class="tm-small tm-text-color-secondary">'.$result['date_created'].'</span></a>
                                             </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>'.$row1['prod_desc'].'</h6>
-                                                <span>'.$row1['price'].'</span>
-                                            </div>
-                                        </a>';
+                                        </div>';
+                                    }
+                                }else{
+                                    echo '<div class="media tm-notification-item">
+                                                <div class="media-body">
+                                                    <p class="mb-2"><b>You have not got any order</b>.</p>
+                                                </div>
+                                        </div>';
                                 }
-                        ?>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                            <?php
-                                $query1 = "SELECT * FROM products ORDER BY id DESC LIMIT 3,3"; 
-                                $result1 = mysqli_query($con, $query1);
-                                while($row1 = mysqli_fetch_array($result1)){
-                                    $id=$row1['id'];
-                                    echo '<a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                            <img src="data:image/jpeg;base64,'.base64_encode($row1['prod_img'] ).'">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>'.$row1['prod_desc'].'</h6>
-                                                <span>'.$row1['price'].'</span>
-                                            </div>
-                                        </a>';
-                                }
-                        ?>
-<!--  -->
-                            </div>
+                            ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>Top Rated Products</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                            <?php
-                                $query1 = "SELECT * FROM products ORDER BY id DESC LIMIT 3,6"; 
-                                $result1 = mysqli_query($con, $query1);
-                                while($row1 = mysqli_fetch_array($result1)){
-                                    $id=$row1['id'];
-                                    echo '<a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                            <img src="data:image/jpeg;base64,'.base64_encode($row1['prod_img'] ).'">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>'.$row1['prod_desc'].'</h6>
-                                                <span>'.$row1['price'].'</span>
-                                            </div>
-                                        </a>';
-                                }
-                        ?>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                            <?php 
-                                $query1 = "SELECT * FROM products ORDER BY id DESC LIMIT 3,9"; 
-                                $result1 = mysqli_query($con, $query1);
-                                while($row1 = mysqli_fetch_array($result1)){
-                                    $id=$row1['id'];
-                                    echo '<a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                            <img src="data:image/jpeg;base64,'.base64_encode($row1['prod_img'] ).'">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>'.$row1['prod_desc'].'</h6>
-                                                <span>'.$row1['price'].'</span>
-                                            </div>
-                                        </a>';
-                                }
-                        ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>Review Products</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                            <?php
-                                $query1 = "SELECT * FROM products ORDER BY id DESC LIMIT 3,12"; 
-                                $result1 = mysqli_query($con, $query1);
-                                while($row1 = mysqli_fetch_array($result1)){
-                                    $id=$row1['id'];
-                                    echo '<a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                            <img src="data:image/jpeg;base64,'.base64_encode($row1['prod_img'] ).'">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>'.$row1['prod_desc'].'</h6>
-                                                <span>'.$row1['price'].'</span>
-                                            </div>
-                                        </a>';
-                                }
-                        ?>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                            <?php
-                                $query1 = "SELECT * FROM products ORDER BY id DESC LIMIT 3"; 
-                                $result1 = mysqli_query($con, $query1);
-                                while($row1 = mysqli_fetch_array($result1)){
-                                    $id=$row1['id'];
-                                    echo '<a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                            <img src="data:image/jpeg;base64,'.base64_encode($row1['prod_img'] ).'">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>'.$row1['prod_desc'].'</h6>
-                                                <span>'.$row1['price'].'</span>
-                                            </div>
-                                        </a>';
-                                }
-                        ?>
-                            </div>
-                        </div>
+                <div class="col-12 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                        <h2 class="tm-block-title">Orders List</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">TRANSACTION ID.</th>
+                                    <th scope="col">STATUS</th>
+                                    <th scope="col">CUSTOMER</th>
+                                    <th scope="col">PRODUCT</th>
+                                    <th scope="col">LOCATION</th>
+                                    <th scope="col">ADDRESS</th>
+                                    <th scope="col">ORDER DATE</th>
+                                    <th scope="col">DETAILS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $sql2 = mysqli_query($con, "SELECT d.id, d.first_name, d.last_name, d.tran_id, d.status, d.country, d.state, d.address, d.date_created, p.prod_name, p.prod_img FROM delivery_details as d inner join products as p on d.prod_id = p.id ORDER BY date_created DESC");
+                                    if (mysqli_num_rows($sql2)>0) {
+                                        # code...
+                                        // $customer = "$row['first_name'] ' ' $row['last_name']";
+                                        // $location = $row['country'] ', ' $row['state'];
+
+                                        while ($row = mysqli_fetch_assoc($sql2)) {
+                                            # code...
+                                            echo '
+                                               
+                                                <tr>
+                                                    <th scope="row"><b>'.$row['tran_id'].'</b></th>
+                                                    <td>
+                                                        <div class="tm-status-circle moving">
+                                                        </div>'.$row['status'].'
+                                                    </td>
+                                                    <td><b>'.$row['first_name'].' '.$row['last_name'].'</b></td>
+                                                    <td><b>'.$row['prod_name'].'</b></td>
+                                                    <td><b>'.$row['country'].', '.$row['state'].'</b></td>
+                                                    <td>'.$row['address'].'</td>
+                                                    <td>'.$row['date_created'].'</td>
+                                                    <td><a href="order_details.php?id='.$row['id'].'"><i class="fa fa-th fa-2x "></i></a>
+                                                </tr>'
+                                                    
+
+                                                ;
+                                        }
+                                    }else{
+                                        echo '<div class="media tm-notification-item">
+                                                    <div class="media-body">
+                                                        <p class="mb-2"><b>You have not got any order</b>.</p>
+                                                    </div>
+                                            </div>';
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Latest Product Section End -->
-
-    <!-- Blog Section Begin -->
-    <section class="from-blog spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title from-blog__title">
-                        <h2>News Feeds</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="assets/img/product/samsung.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Samsung Galaxy Note20 5G</a></h5>
-                            <p>Timeless design in premium colors, including the Mystic Bronze with its new Haze texture that highlights the fine craftsmanship. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="assets/img/product/nivea.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Nivea Smooth Sensation Body Lotion</a></h5>
-                            <p>NIVEA Smooth Daily Moisture Body Lotion 16.9 Fluid Ounce </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="assets/img/product/tv.jpeg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Samsung Super 6 4K UHD TV</a></h5>
-                            <p>Samsung has announced a new line of online-exclusive 4K UHD Smart TVs. The TVs come with Super 6 features and support for apps like Netflix, Prime Video and YouTube. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Blog Section End -->
-
    <!--Footer -->
 
    <?php include('attach/footer.php') ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        fetchNotification();
+
+        function fetchNotification(){
+            $.ajax({
+                url: 'enterurl',
+                method: 'post',
+                data: {action: 'fetchNotification'},
+                success:function(response){
+
+                }
+            });
+        }
+    });
+</script>
